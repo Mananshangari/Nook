@@ -3,7 +3,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export interface ConnectedPlatform {
   id: string;
-  name: 'YouTube' | 'Instagram' | 'TikTok';
+  name: 'YouTube' | 'Instagram';
   handle: string;
   connectedAt: number;
 }
@@ -14,6 +14,7 @@ export interface Profile {
   streak: number;
   lastActiveDate: string;
   connectedPlatforms: ConnectedPlatform[];
+  signalCount: number;
 }
 
 const STORAGE_KEY = '@nook_profile';
@@ -24,7 +25,11 @@ const DEFAULT_PROFILE: Profile = {
   streak: 0,
   lastActiveDate: '',
   connectedPlatforms: [],
+  signalCount: 0,
 };
+
+// Mock total of actionable signals loaded when a platform first connects
+const MOCK_SIGNAL_COUNT = 8;
 
 interface ProfileContextValue {
   profile: Profile;
@@ -62,7 +67,11 @@ export function ProfileProvider({ children }: { children: React.ReactNode }) {
   const connectPlatform = useCallback(
     async (platform: Omit<ConnectedPlatform, 'id' | 'connectedAt'>) => {
       const p: ConnectedPlatform = { id: genId(), connectedAt: Date.now(), ...platform };
-      await save({ ...profile, connectedPlatforms: [...profile.connectedPlatforms, p] });
+      await save({
+        ...profile,
+        connectedPlatforms: [...profile.connectedPlatforms, p],
+        signalCount: MOCK_SIGNAL_COUNT,
+      });
     },
     [profile, save],
   );

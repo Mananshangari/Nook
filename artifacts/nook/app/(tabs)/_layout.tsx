@@ -1,6 +1,7 @@
 import React from 'react';
 import { Platform, StyleSheet, useColorScheme, View } from 'react-native';
 import { useColors } from '@/hooks/useColors';
+import { useProfile } from '@/context/ProfileContext';
 import { Feather } from '@expo/vector-icons';
 import { BlurView } from 'expo-blur';
 import { isLiquidGlassAvailable } from 'expo-glass-effect';
@@ -35,6 +36,8 @@ function ClassicTabLayout() {
   const colors = useColors();
   const colorScheme = useColorScheme();
   const isDark = colorScheme === 'dark';
+  const { profile } = useProfile();
+  const signalBadge = profile.signalCount > 0 ? profile.signalCount : undefined;
   const isIOS = Platform.OS === 'ios';
   const isWeb = Platform.OS === 'web';
 
@@ -99,6 +102,8 @@ function ClassicTabLayout() {
         name="audience"
         options={{
           title: 'Signal',
+          tabBarBadge: signalBadge,
+          tabBarBadgeStyle: { backgroundColor: colors.primary, fontSize: 10, fontFamily: 'Inter_700Bold' },
           tabBarIcon: ({ color }) =>
             isIOS ? (
               <SymbolView name="waveform" tintColor={color} size={22} />
