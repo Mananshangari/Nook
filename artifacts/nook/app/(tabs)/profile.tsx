@@ -117,7 +117,7 @@ export default function ProfileScreen() {
           <View style={[styles.emptyPlatforms, { backgroundColor: colors.card, borderColor: colors.border }]}>
             <Feather name="link" size={18} color={colors.textMuted} />
             <Text style={[styles.emptyPlatformsText, { color: colors.textMuted }]}>
-              Connect platforms in the Pulse tab
+              Connect platforms in the Signal tab
             </Text>
           </View>
         ) : (
@@ -156,7 +156,7 @@ export default function ProfileScreen() {
           {[
             'Capture ideas faster',
             'Develop ideas with AI',
-            'Read audience demand via Pulse',
+            'Read audience demand via Signal',
             'Move ideas closer to publishing',
           ].map((p, i) => (
             <View key={i} style={styles.principle}>

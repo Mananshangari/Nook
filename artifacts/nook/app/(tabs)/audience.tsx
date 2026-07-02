@@ -128,7 +128,7 @@ export default function AudienceScreen() {
     return (
       <View style={[styles.root, { backgroundColor: colors.background }]}>
         <View style={[styles.headerArea, { paddingTop: topPadding + 16 }]}>
-          <Text style={[styles.screenTitle, { color: colors.foreground }]}>Pulse</Text>
+          <Text style={[styles.screenTitle, { color: colors.foreground }]}>Signal</Text>
           <Text style={[styles.screenSub, { color: colors.textSecondary }]}>
             What your audience is actually asking for
           </Text>
@@ -197,7 +197,7 @@ export default function AudienceScreen() {
     <View style={[styles.root, { backgroundColor: colors.background }]}>
       <View style={[styles.headerArea, { paddingTop: topPadding + 16 }]}>
         <View style={styles.headerRow}>
-          <Text style={[styles.screenTitle, { color: colors.foreground }]}>Pulse</Text>
+          <Text style={[styles.screenTitle, { color: colors.foreground }]}>Signal</Text>
           <View style={[styles.connectedBadge, { backgroundColor: colors.primary + '22', borderColor: colors.primary + '44' }]}>
             <View style={[styles.dot, { backgroundColor: colors.primary }]} />
             <Text style={[styles.connectedText, { color: colors.primary }]}>YouTube</Text>

@@ -21,7 +21,7 @@ function NativeTabLayout() {
       </NativeTabs.Trigger>
       <NativeTabs.Trigger name="audience">
         <Icon sf={{ default: 'waveform', selected: 'waveform' }} />
-        <Label>Pulse</Label>
+        <Label>Signal</Label>
       </NativeTabs.Trigger>
       <NativeTabs.Trigger name="profile">
         <Icon sf={{ default: 'person.circle', selected: 'person.circle.fill' }} />
@@ -98,7 +98,7 @@ function ClassicTabLayout() {
       <Tabs.Screen
         name="audience"
         options={{
-          title: 'Pulse',
+          title: 'Signal',
           tabBarIcon: ({ color }) =>
             isIOS ? (
               <SymbolView name="waveform" tintColor={color} size={22} />

@@ -120,7 +120,7 @@ export default function HomeScreen() {
           <View style={[styles.audienceTeaser, { backgroundColor: colors.card, borderColor: colors.border }]}>
             <Feather name="users" size={16} color={colors.textMuted} />
             <Text style={[styles.audienceTeaserText, { color: colors.textSecondary }]}>
-              Connect your channel to unlock Pulse — see what your audience wants
+              Connect your channel to unlock Signal — see what your audience wants
             </Text>
           </View>
         )}
