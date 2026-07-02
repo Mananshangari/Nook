@@ -128,9 +128,9 @@ export default function AudienceScreen() {
     return (
       <View style={[styles.root, { backgroundColor: colors.background }]}>
         <View style={[styles.headerArea, { paddingTop: topPadding + 16 }]}>
-          <Text style={[styles.screenTitle, { color: colors.foreground }]}>Audience</Text>
+          <Text style={[styles.screenTitle, { color: colors.foreground }]}>Pulse</Text>
           <Text style={[styles.screenSub, { color: colors.textSecondary }]}>
-            Understand what your audience actually wants
+            What your audience is actually asking for
           </Text>
         </View>
 
@@ -188,17 +188,6 @@ export default function AudienceScreen() {
             </View>
           </Pressable>
 
-          <Pressable
-            style={[styles.platformBtn, { backgroundColor: colors.card, borderColor: colors.border, opacity: 0.5 }]}
-          >
-            <View style={[styles.platformIcon, { backgroundColor: '#00000044' }]}>
-              <Feather name="music" size={20} color="#CCCCCC" />
-            </View>
-            <View style={styles.platformInfo}>
-              <Text style={[styles.platformName, { color: colors.foreground }]}>TikTok</Text>
-              <Text style={[styles.platformSub, { color: colors.textMuted }]}>Access confirming · Coming soon</Text>
-            </View>
-          </Pressable>
         </ScrollView>
       </View>
     );
@@ -208,7 +197,7 @@ export default function AudienceScreen() {
     <View style={[styles.root, { backgroundColor: colors.background }]}>
       <View style={[styles.headerArea, { paddingTop: topPadding + 16 }]}>
         <View style={styles.headerRow}>
-          <Text style={[styles.screenTitle, { color: colors.foreground }]}>Audience</Text>
+          <Text style={[styles.screenTitle, { color: colors.foreground }]}>Pulse</Text>
           <View style={[styles.connectedBadge, { backgroundColor: colors.primary + '22', borderColor: colors.primary + '44' }]}>
             <View style={[styles.dot, { backgroundColor: colors.primary }]} />
             <Text style={[styles.connectedText, { color: colors.primary }]}>YouTube</Text>

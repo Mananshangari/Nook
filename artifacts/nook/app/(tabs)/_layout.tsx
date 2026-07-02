@@ -20,8 +20,8 @@ function NativeTabLayout() {
         <Label>Ideas</Label>
       </NativeTabs.Trigger>
       <NativeTabs.Trigger name="audience">
-        <Icon sf={{ default: 'person.2', selected: 'person.2.fill' }} />
-        <Label>Audience</Label>
+        <Icon sf={{ default: 'waveform', selected: 'waveform' }} />
+        <Label>Pulse</Label>
       </NativeTabs.Trigger>
       <NativeTabs.Trigger name="profile">
         <Icon sf={{ default: 'person.circle', selected: 'person.circle.fill' }} />
@@ -98,12 +98,12 @@ function ClassicTabLayout() {
       <Tabs.Screen
         name="audience"
         options={{
-          title: 'Audience',
+          title: 'Pulse',
           tabBarIcon: ({ color }) =>
             isIOS ? (
-              <SymbolView name="person.2" tintColor={color} size={22} />
+              <SymbolView name="waveform" tintColor={color} size={22} />
             ) : (
-              <Feather name="users" size={22} color={color} />
+              <Feather name="activity" size={22} color={color} />
             ),
         }}
       />
