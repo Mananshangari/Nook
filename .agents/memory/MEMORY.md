@@ -1,0 +1,2 @@
+- [Nook colors type](nook-colors-type.md) — useColors.ts cast incompatible when colors has mixed-type keys (palette + radius); fix by accessing .dark directly, not via cast.
+- [Nook audience state](nook-audience-state.md) — Audience connect must call connectPlatform() from ProfileContext, not local state, so Home/Profile tabs stay in sync.

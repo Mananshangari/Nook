@@ -1,0 +1,199 @@
+ Nook – V1 Product Design Prompt
+
+Design and build a beautiful, premium mobile application called **Nook**.
+
+Nook is an **AI Second Brain for Creators** — a notebook that became intelligent.
+
+It is **not** another AI writing tool, **not** a project management app, and **not** another social media scheduler.
+
+Its purpose:
+
+**Help creators capture every idea, talk through it with an AI thinking partner, and know exactly what their audience actually wants to see next — without wading through comment sections to find it.**
+
+The app should feel simple enough that a new user understands it within the first minute.
+
+---
+
+# Who This Is For (V1 Decision)
+
+**V1 targets solo creators only** — not social media managers or agencies.
+
+Reasoning: multi-account dashboards, client reporting, and approval workflows are a meaningfully different product with different UX needs. Serving both from day one mushes the experience. Agency/manager tooling is a post-V1 expansion, not a launch feature.
+
+---
+
+# Design Philosophy
+
+Premium, calm, modern, creator-first.
+
+Inspiration:
+- Apple's Human Interface Guidelines
+- Linear's clean spacing
+- Notion's simplicity
+- Arc Browser's polish
+- YouTube's navigation familiarity (without copying layouts)
+
+Avoid the typical "AI app" aesthetic: no glowing gradients, no neon, no clutter, no dashboards for the sake of dashboards. Every element earns its place.
+
+---
+
+# Color Theme
+
+Default Theme: Dark
+
+- Background: `#0B0B0B`
+- Secondary Background: `#121212`
+- Cards: `#181818`
+- Primary Accent — Nook Green: `#37D67A`
+
+Green is used sparingly, only for: active buttons, AI suggestions, progress indicators, success states. The interface should feel sophisticated, not colorful.
+
+---
+
+# Typography
+
+Inter or SF Pro Display. Large clean headings, comfortable body text, rounded corners, large touch targets, generous whitespace, subtle animation, native feel.
+
+---
+
+# Core Navigation
+
+Four tabs, no more:
+
+**Home · Ideas · Audience · Profile**
+
+Note the change from the original draft: **Audience replaces a generic "AI" tab.** The comment-triage feature is the flagship differentiator — it gets its own tab, not a buried subsection. If a user only ever taps one thing to understand why Nook is different from a notes app, it should be one tap away.
+
+---
+
+# V1 Scope — What's IN and What's Deliberately OUT
+
+Four AI-dependent systems were in the original draft (Idea Conversations, AI Search, Audience Insights, AI Recommendations). Shipping all four at premium quality simultaneously is how launches slip or everything ships mediocre. V1 cuts to the two features that form the core loop plus the flagship wedge:
+
+**IN for V1:**
+1. Quick Capture (the front door — must be frictionless)
+2. Idea Conversations (the core "notebook that talks back" loop)
+3. Audience Insights / Comment Triage (the flagship differentiator — this is the feature nothing else on the market does well)
+
+**OUT for V1 — build in V1.1+:**
+- AI Search (semantic search) — valuable, but a retention feature, not an acquisition feature. Users need a body of saved ideas before search matters.
+- AI Recommendations ("you should work on this") — same logic, needs usage history to be any good; recommending things to a user with 3 saved ideas is noise, not insight.
+
+A basic **manual folder/tag override** ships in V1 alongside auto-categorization — see note below on why.
+
+---
+
+# Home
+
+Answers one question: **"What should I work on today?"**
+
+Shows only:
+- Continue Working
+- Recent Ideas
+- Quick Capture button
+
+**Empty state (Day 1, zero data) — this must be explicitly designed, not left blank:**
+Instead of a blank "Recent Ideas" or "no insights yet" placeholder, Home should show a short, warm first-run prompt: something like "Capture your first idea — a voice note, a screenshot, a half-formed thought" with the Quick Capture button front and center. No AI Recommendation module on Home in V1 (it doesn't exist yet), and no Audience Insights preview on Home until an account is connected — show a one-line "Connect your channel to see what your audience wants" prompt instead of an empty widget.
+
+---
+
+# Ideas (The Core Capture Surface)
+
+Creators save anything: random thoughts, messy paragraphs, half-written concepts, voice notes, photos, screenshots, links, YouTube videos, Instagram posts, tweets, bookmarks.
+
+AI auto-categorizes on save — **but this is a promise to soften, not a guarantee to make.** Auto-categorization is genuinely difficult to get right early (thin data, no usage history yet), and one visibly wrong auto-file is enough to make a user distrust the whole system. So:
+
+- Default experience: no folders, AI organizes automatically.
+- **One tap away at all times:** a manual override / simple tag so a user can correct or bypass auto-sort. Pitch this internally as "you'll rarely need it," not "it doesn't exist."
+
+Every saved idea expands into its own page with its own AI conversation.
+
+---
+
+# Idea Conversations
+
+Natural back-and-forth with the AI on any saved idea. Examples:
+
+- Expand this idea.
+- Challenge this concept.
+- Turn this into a YouTube video / Instagram format.
+- Give me better hooks or titles.
+- What problems does this idea have?
+- How could this become a series?
+
+The AI uses the creator's previous ideas as context — this should feel like brainstorming with a creative partner, not chatting with a generic bot.
+
+---
+
+# Audience Insights (Flagship Feature — Comment Triage)
+
+This is Nook's wedge. It works for a single user on day one, doesn't require anyone else to be on the platform, and nothing else on the market does it well.
+
+**What it does:** scans a creator's comment section and classifies by *actionability*, not just sentiment. Sentiment alone is commoditized and too blunt — "please stop making videos like this" is negative *and* contains a real signal. The classification model should be closer to:
+
+- **Request / suggestion / question** → surfaced as a potential video idea
+- **Insult / no substance** → hidden
+- **Ambiguous** → shown in a separate "gray zone" tab rather than auto-decided either way
+
+**Surfaced to the creator:**
+- Most requested video topics
+- Frequently asked questions
+- Requests for Part 2 / follow-ups
+- Constructive criticism
+- Repeated audience pain points
+
+**Hidden by default:**
+- Spam, duplicate comments, personal attacks, meaningless hate
+
+**Trust safeguards (non-negotiable):**
+- A visible, always-available "show me everything" toggle. A creator must never feel the app is deciding what they're allowed to see from their own audience.
+- Conservative bias on the hide decision — when in doubt, surface it. A missed piece of real harassment or a legit business complaint that gets auto-hidden is the failure mode that kills trust permanently. Better to occasionally show something borderline than to hide something that mattered.
+- No fully automatic hard-delete of anything — hidden means filtered from the default view, not destroyed or unreachable.
+
+**Platform access reality — must be resolved before this is promised in-app:**
+- **YouTube:** Data API access to comments is comparatively straightforward.
+- **Instagram:** requires the creator to connect a Business/Creator account via the Graph API, and comment-read permissions go through Meta's app review — not guaranteed, not fast. This needs to be scoped and tested with real API approval *before* "connect your Instagram" ships as a promise in the UI.
+- **TikTok:** third-party comment read access is more restricted still; V1 may need to launch YouTube-first and add other platforms as access is actually confirmed, rather than listing all platforms upfront and disappointing users who connect and get partial data.
+
+---
+
+# Workspace
+
+Three stages only: **Ideas → Working On → Published.** Drag and drop between columns. Nothing more added in V1.
+
+---
+
+# Quick Capture
+
+The fastest path in the app — under two taps from anywhere.
+
+Capture from: Text, Voice, Camera, Photos, Share Sheet, Safari, Instagram, YouTube.
+
+The faster a user can save an idea, the more valuable the app becomes — this is the feature that earns daily-open habit, so it should get disproportionate design attention relative to its apparent simplicity.
+
+---
+
+# Profile
+
+Simple: name, photo, connected platforms, number of saved ideas, publishing streak. Nothing else in V1.
+
+---
+
+# Product Principles
+
+Every feature must satisfy at least one of these:
+
+1. Capture ideas faster.
+2. Develop ideas with AI.
+3. Understand audience demand.
+4. Move an idea closer to publishing.
+
+("Find ideas instantly" — AI Search — is intentionally deferred to V1.1; it's a real goal, just not a V1 goal, since it needs usage history to be worth building well.)
+
+---
+
+# Overall Experience
+
+Nook should feel less like software and more like a notebook that became intelligent. A creator opens it daily because it remembers every idea, helps sharpen every concept, and tells them — honestly, without noise — what their audience is actually asking for.
+
+Elegant, fast, distraction-free, and trustworthy enough that creators default to it the moment a new idea shows up.
